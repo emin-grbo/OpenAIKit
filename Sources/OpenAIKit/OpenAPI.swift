@@ -26,9 +26,9 @@ public class OpenAPI {
     return try decodeOrThrow(data: data)
   }
   
-  public static func uploadAudio(withToken token: String) async throws -> TranscribeResponse {
+  public static func uploadAudio(withToken token: String, named fileName: String) async throws -> TranscribeResponse {
     
-    guard let fileURL = fileURL(), let audioData = try? Data(contentsOf: fileURL)
+    guard let fileURL = fileURL(forName: fileName), let audioData = try? Data(contentsOf: fileURL)
     else { throw OpenAIError.custom(description: "bad audio") }
     
     let boundary = "Boundary-\(UUID().uuidString)"
@@ -42,7 +42,7 @@ public class OpenAPI {
     let httpBody = NSMutableData()
     httpBody.appendString(convertFormField(named: "model", value: "whisper-1", using: boundary))
     httpBody.append(convertFileData(fieldName: "file",
-                                    fileName: "whisper.m4a",
+                                    fileName: "\(fileName).m4a",
                                     mimeType: "audio/mp4",
                                     fileData: audioData,
                                     using: boundary))
@@ -84,14 +84,14 @@ public class OpenAPI {
 //    }
 //  }
 //
-  static func decodeOrThrow(data: Data) throws -> ChatResponse {
-    do {
-      let result = try JSONDecoder().decode(ChatResponse.self, from: data)
-      return result
-    } catch {
-      throw error
-    }
-  }
+//  static func decodeOrThrow(data: Data) throws -> ChatResponse {
+//    do {
+//      let result = try JSONDecoder().decode(ChatResponse.self, from: data)
+//      return result
+//    } catch {
+//      throw error
+//    }
+//  }
   
   private static func decodeOrThrow<T:Codable>(data: Data) throws -> T {
     do {
@@ -105,9 +105,9 @@ public class OpenAPI {
 
 // MARK: Helpers
 private extension OpenAPI {
-  private static func fileURL() -> URL? {
+  private static func fileURL(forName name: String) -> URL? {
     let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-    let realURL = documentsDirectory.appendingPathComponent("whisper.m4a")
+    let realURL = documentsDirectory.appendingPathComponent("\(name).m4a")
     return realURL
   }
   
