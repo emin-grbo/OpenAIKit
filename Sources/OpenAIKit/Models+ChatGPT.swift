@@ -28,12 +28,12 @@ public struct ChatQuery: Codable {
 }
 
 public struct ChatResponse: Codable {
-  var id: String?
-  var object: String?
-  var created: Int?
-  var model: String?
-  var choices: [ChatChoice] = []
-  var usage: Usage?
+  public var id: String?
+  public var object: String?
+  public var created: Int?
+  public var model: String?
+  public var choices: [ChatChoice] = []
+  public var usage: Usage?
 }
 
 public struct ChatChoice: Codable {
