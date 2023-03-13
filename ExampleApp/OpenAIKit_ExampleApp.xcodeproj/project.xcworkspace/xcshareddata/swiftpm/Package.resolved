@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "openaikit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/emin-grbo/OpenAIKit",
+      "state" : {
+        "branch" : "main",
+        "revision" : "fa6510e9ffd8c798a67751cb843c1df55c1b08d8"
+      }
+    }
+  ],
+  "version" : 2
+}
