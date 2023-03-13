@@ -9,11 +9,16 @@ public enum MessageRole: String, Codable {
 public struct Message: Codable {
   let role: MessageRole
   let content: String
+  
+  init(role: MessageRole, content: String) {
+    self.role = role
+    self.content = content
+  }
 }
 
 public struct ChatQuery: Codable {
   var model: AiModel
-  public var messages: [Message]
+  var messages: [Message]
   // needs to have a default instruction in place: [Message(role: .system, content: "You are a helpful assistant")]
   
   init(messages: [Message]) {
