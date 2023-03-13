@@ -14,7 +14,7 @@ enum HttpMethod: String {
 
 public class OpenAPI {
   
-  public static func fetchChatResponse(_ query: ChatQuery, withToken token: String) async throws -> ChatResponse {
+  public static func chatGPT(_ query: ChatQuery, withToken token: String) async throws -> ChatResponse {
     var request = URLRequest(url: Endpoint.chatAi)
     request.httpBody = try JSONEncoder().encode(query)
     request.httpMethod = HttpMethod.POST.rawValue
@@ -26,7 +26,7 @@ public class OpenAPI {
     return try decodeOrThrow(data: data)
   }
   
-  public static func uploadAudio(withToken token: String, named fileName: String) async throws -> TranscribeResponse {
+  public static func whisperAi(withToken token: String, named fileName: String) async throws -> TranscribeResponse {
     
     guard let fileURL = fileURL(forName: fileName), let audioData = try? Data(contentsOf: fileURL)
     else { throw OpenAIError.custom(description: "bad audio") }

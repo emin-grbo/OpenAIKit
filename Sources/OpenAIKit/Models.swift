@@ -11,9 +11,15 @@ public struct CompletionResponse: Codable {
 }
 
 public struct CompletionQueryModel: Codable {
-  var model: AiModel
-  let prompt: String
-  var max_tokens = 4000
+  public var model: AiModel
+  public let prompt: String
+  public var max_tokens: Int
+  
+  public init(model: AiModel, prompt: String, max_tokens: Int = 4000) {
+    self.model = model
+    self.prompt = prompt
+    self.max_tokens = max_tokens
+  }
 }
 
 public enum AiModel: String, Codable {
