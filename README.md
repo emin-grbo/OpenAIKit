@@ -1,9 +1,9 @@
-# OpenAIKit
+# 📦 OpenAIKit
 Simple networking layer written in Swift for interacting with OpenAI
 
 It can serve as an insporation for creating a full-fledged package. In it's current state it is a helper to aid you get your app of the ground quickly and introduce you with various approaches when interacting with OpenAI models.
 
-## How to use
+## 🙋‍♂️ How to use
 - Get your API key:
 [https://platform.openai.com/docs/introduction](https://platform.openai.com/)
 
@@ -12,10 +12,10 @@ It can serve as an insporation for creating a full-fledged package. In it's curr
 - import:
 `import OpenAIKit`
 
-## Example app
+## 📲 Example app
 Within a repository there is a sample app which was written in a single file, just to demonstrate the overall approach.
 
-## ChatGPT
+## 💬 ChatGPT
 To interact with Chat GPT, send the `ChatQuery` object along with your APIKey
 
 `OpenAPI.chatGPT(_ query: ChatQuery, withToken token: String) async throws -> ChatResponse {`
@@ -44,7 +44,7 @@ public struct ChatResponse: Codable {
 
 Where the object `choices.first` contains the `message.content` which is the actual text response.
 
-## Completions
+## 📓 Completions
 To access various other models which performs completins, more on that [HERE](https://platform.openai.com/docs/guides/completion), use the following approach.
 
 `OpenAPI.fetchCompletion(_ query: CompletionQueryModel, withToken token: String) async throws -> CompletionResponse {`
@@ -72,7 +72,7 @@ public struct CompletionResponse: Codable {
 }
 ```
 
-## Whisper Ai
+## 🎙️ Whisper Ai
 Interacting with Whisper Ai is still not 100% fire-proof, as in personal experiments we noticed that one needs to wait at least a second for the file to get saved, before uploading it. This can cause some issues in usage, as well as the fact that if audio was not recorded correctly, ie no words are clear, OpenAi will respond with an error, saying that the audio file was corrupted.
 
 `OpenAPI.whisperAi(withToken token: String, named fileName: String) async throws -> TranscribeResponse {`
@@ -84,3 +84,16 @@ public struct TranscribeResponse: Codable {
   public var text: String?
 }
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
