@@ -38,7 +38,7 @@ struct ContentView: View {
             
             Task {
               isLoadingChat = true
-              let res = try? await OpenAPI.chatGPT(query, withToken: "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")
+              let res = try? await OpenAPI.chatGPT(query, withToken: "<YOUR-API-KEY>")
               let chatResponseMessage = res?.choices.first?.message.content ?? "⚠️"
               print(chatResponseMessage)
               chatResponse = chatResponseMessage
@@ -72,7 +72,7 @@ struct ContentView: View {
             
             Task {
               isLoadingAi = true
-              let res = try? await OpenAPI.fetchCompletion(query, withToken: "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")
+              let res = try? await OpenAPI.fetchCompletion(query, withToken: "<YOUR-API-KEY>")
               let aiResponseMessage = res?.choices.first?.text ?? "⚠️"
               print(aiResponseMessage)
               aiResponse = aiResponseMessage
@@ -106,7 +106,7 @@ struct ContentView: View {
               AudioServicesPlaySystemSound(1306)
               Task {
                 isLoadingWhisper = true
-                let res = try? await OpenAPI.whisperAi(withToken: "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", named: "test")
+                let res = try? await OpenAPI.whisperAi(withToken: "<YOUR-API-KEY>", named: "test")
                 let whisperResponseMessage = res?.text ?? "⚠️"
                 print(whisperResponseMessage)
                 whisperResponse = whisperResponseMessage
