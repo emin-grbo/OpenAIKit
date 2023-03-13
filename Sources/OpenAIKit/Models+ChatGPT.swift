@@ -12,9 +12,14 @@ public struct Message: Codable {
 }
 
 public struct ChatQuery: Codable {
-  var model: AiModel = .chatGPT
+  var model: AiModel
   public var messages: [Message]
   // needs to have a default instruction in place: [Message(role: .system, content: "You are a helpful assistant")]
+  
+  init(messages: [Message]) {
+    self.model = .chatGPT
+    self.messages = messages
+  }
 }
 
 public struct ChatResponse: Codable {
