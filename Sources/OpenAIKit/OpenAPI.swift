@@ -84,14 +84,14 @@ public class OpenAPI {
 //    }
 //  }
 //
-//  static func decodeOrThrow(data: Data) throws -> ChatResponse {
-//    do {
-//      let result = try JSONDecoder().decode(ChatResponse.self, from: data)
-//      return result
-//    } catch {
-//      throw error
-//    }
-//  }
+  static func decodeOrThrow(data: Data) throws -> ChatResponse {
+    do {
+      let result = try JSONDecoder().decode(ChatResponse.self, from: data)
+      return result
+    } catch {
+      throw error
+    }
+  }
   
   private static func decodeOrThrow<T:Codable>(data: Data) throws -> T {
     do {
