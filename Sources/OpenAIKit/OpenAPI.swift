@@ -12,9 +12,9 @@ enum HttpMethod: String {
   case POST
 }
 
-class OpenAPI {
+public class OpenAPI {
   
-  static func fetchChatResponse(_ query: ChatQuery, withToken token: String) async throws -> ChatResponse {
+  public static func fetchChatResponse(_ query: ChatQuery, withToken token: String) async throws -> ChatResponse {
     var request = URLRequest(url: Endpoint.chatAi)
     request.httpBody = try JSONEncoder().encode(query)
     request.httpMethod = HttpMethod.POST.rawValue
@@ -26,7 +26,7 @@ class OpenAPI {
     return try decodeOrThrow(data: data)
   }
   
-  static func uploadAudio(withToken token: String) async throws -> TranscribeResponse {
+  public static func uploadAudio(withToken token: String) async throws -> TranscribeResponse {
     
     guard let fileURL = fileURL(), let audioData = try? Data(contentsOf: fileURL)
     else { throw OpenAIError.custom(description: "bad audio") }
@@ -53,7 +53,7 @@ class OpenAPI {
     return try decodeOrThrow(data: data)
   }
   
-  static func fetchCompletion(_ query: CompletionQueryModel, withToken token: String) async throws -> CompletionResponse {
+  public static func fetchCompletion(_ query: CompletionQueryModel, withToken token: String) async throws -> CompletionResponse {
     let url = URL(string: "https://api.openai.com/v1/completions")!
     var request = URLRequest(url: url)
     request.httpBody = try JSONEncoder().encode(query)

@@ -1,23 +1,23 @@
 import Foundation
 
-enum MessageRole: String, Codable {
+public enum MessageRole: String, Codable {
   case system
   case user
   case assistant
 }
 
-struct Message: Codable {
+public struct Message: Codable {
   let role: MessageRole
   let content: String
 }
 
-struct ChatQuery: Codable {
+public struct ChatQuery: Codable {
   var model: AiModel = .chatGPT
   var messages: [Message]
   // needs to have a default instruction in place: [Message(role: .system, content: "You are a helpful assistant")]
 }
 
-struct ChatResponse: Codable {
+public struct ChatResponse: Codable {
   var id: String?
   var object: String?
   var created: Int?
@@ -26,7 +26,7 @@ struct ChatResponse: Codable {
   var usage: Usage?
 }
 
-struct ChatChoice: Codable {
+public struct ChatChoice: Codable {
   var message: Message
 //  var index: Int?
 //  var logprobs: String?
