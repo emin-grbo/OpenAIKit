@@ -1,6 +1,5 @@
 import Foundation
 
-// Used but regular completion models
 public struct CompletionResponse: Codable {
   public var id: String?
   public var object: String?
@@ -90,5 +89,5 @@ public struct Usage: Codable {
 }
 
 public enum OpenAIError: Error {
-case custom(description: String)
+  case custom(description: String)
 }
