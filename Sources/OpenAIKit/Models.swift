@@ -2,12 +2,12 @@ import Foundation
 
 // Used but regular completion models
 public struct CompletionResponse: Codable {
-  var id: String?
-  var object: String?
-  var created: Int?
-  var model: String?
-  var choices: [Choice] = []
-  var usage: Usage?
+  public var id: String?
+  public var object: String?
+  public var created: Int?
+  public var model: String?
+  public var choices: [Choice] = []
+  public var usage: Usage?
 }
 
 public struct CompletionQueryModel: Codable {
@@ -66,10 +66,10 @@ public struct ErrorContent: Codable {
 }
 
 public struct Choice: Codable {
-  var text: String?
-  var index: Int?
-  var logprobs: String?
-  var finishReason: String?
+  public var text: String?
+  public var index: Int?
+  public var logprobs: String?
+  public var finishReason: String?
   
   enum CodingKeys: String, CodingKey {
     case text, index, logprobs
@@ -78,9 +78,9 @@ public struct Choice: Codable {
 }
 
 public struct Usage: Codable {
-  var promptTokens: Int?
-  var completionTokens: Int?
-  var totalTokens: Int?
+  public var promptTokens: Int?
+  public var completionTokens: Int?
+  public var totalTokens: Int?
   
   enum CodingKeys: String, CodingKey {
     case promptTokens = "prompt_tokens"
