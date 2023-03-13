@@ -10,7 +10,7 @@ public struct Message: Codable {
   public let role: MessageRole
   public let content: String
   
-  init(role: MessageRole, content: String) {
+  public init(role: MessageRole, content: String) {
     self.role = role
     self.content = content
   }
@@ -21,7 +21,7 @@ public struct ChatQuery: Codable {
   public var messages: [Message]
   // needs to have a default instruction in place: [Message(role: .system, content: "You are a helpful assistant")]
   
-  init(messages: [Message]) {
+  public init(messages: [Message]) {
     self.model = .chatGPT
     self.messages = messages
   }
