@@ -37,7 +37,7 @@ public struct ChatResponse: Codable {
 }
 
 public struct ChatChoice: Codable {
-  var message: Message
+  public var message: Message
 //  var index: Int?
 //  var logprobs: String?
 //  var finishReason: String?
