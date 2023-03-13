@@ -66,33 +66,6 @@ public class OpenAPI {
     return try decodeOrThrow(data: data)
   }
   
-//  static func decodeOrThrow(data: Data) throws -> CompletionResponse {
-//    do {
-//      let result = try JSONDecoder().decode(CompletionResponse.self, from: data)
-//      return result
-//    } catch {
-//      throw error
-//    }
-//  }
-//
-//  static func decodeOrThrow(data: Data) throws -> TranscribeResponse {
-//    do {
-//      let result = try JSONDecoder().decode(TranscribeResponse.self, from: data)
-//      return result
-//    } catch {
-//      throw error
-//    }
-//  }
-//
-//  static func decodeOrThrow(data: Data) throws -> ChatResponse {
-//    do {
-//      let result = try JSONDecoder().decode(ChatResponse.self, from: data)
-//      return result
-//    } catch {
-//      throw error
-//    }
-//  }
-  
   private static func decodeOrThrow<T:Codable>(data: Data) throws -> T {
     do {
       let result = try JSONDecoder().decode(T.self, from: data)
