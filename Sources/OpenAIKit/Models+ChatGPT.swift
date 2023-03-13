@@ -7,8 +7,8 @@ public enum MessageRole: String, Codable {
 }
 
 public struct Message: Codable {
-  let role: MessageRole
-  let content: String
+  public let role: MessageRole
+  public let content: String
   
   init(role: MessageRole, content: String) {
     self.role = role
@@ -18,7 +18,7 @@ public struct Message: Codable {
 
 public struct ChatQuery: Codable {
   var model: AiModel
-  var messages: [Message]
+  public var messages: [Message]
   // needs to have a default instruction in place: [Message(role: .system, content: "You are a helpful assistant")]
   
   init(messages: [Message]) {
